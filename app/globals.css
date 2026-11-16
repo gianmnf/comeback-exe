@@ -27,6 +27,10 @@ body {
 }
 a { color: inherit; text-decoration: none; }
 button { font: inherit; }
+a:focus-visible, button:focus-visible {
+  outline: 2px solid var(--mint);
+  outline-offset: 4px;
+}
 ::selection { color: #0b0c12; background: var(--mint); }
 
 .site-shell { position: relative; overflow: hidden; min-height: 100vh; }
@@ -56,7 +60,8 @@ button { font: inherit; }
 .desktop-nav a:hover { color: var(--mint); }
 .availability { display: flex; align-items: center; gap: 9px; font-size: 9px; color: #c5c6d4; border: 1px solid var(--line); padding: 10px 13px; border-radius: 30px; }
 .status-dot, .system-pulse { width: 7px; height: 7px; background: var(--mint); border-radius: 50%; box-shadow: 0 0 12px #9de9df99; }
-.mobile-menu { display: none; border: 1px solid var(--line); color: var(--text); background: #ffffff08; border-radius: 10px; padding: 9px; }
+.mobile-menu { display: none; border: 1px solid var(--line); color: var(--text); background: #ffffff08; border-radius: 10px; padding: 9px; cursor: pointer; }
+.mobile-nav { display: none; }
 
 .hero { min-height: 650px; display: grid; grid-template-columns: 1.03fr .97fr; align-items: center; gap: 30px; padding-top: 55px; padding-bottom: 90px; }
 .hero-copy { position: relative; z-index: 2; }
@@ -216,6 +221,38 @@ button { font: inherit; }
   .topbar { height: 70px; }
   .desktop-nav { display: none; }
   .mobile-menu { display: inline-grid; place-items: center; }
+  .mobile-nav {
+    position: absolute;
+    z-index: 20;
+    top: calc(100% + 1px);
+    right: 0;
+    display: grid;
+    width: min(280px, calc(100vw - 36px));
+    padding: 9px;
+    border: 1px solid var(--line);
+    border-radius: 12px;
+    background: rgba(17, 19, 29, .97);
+    box-shadow: 0 18px 45px #0009, inset 0 1px #ffffff0b;
+    backdrop-filter: blur(18px);
+  }
+  .mobile-nav a {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    min-height: 49px;
+    padding: 0 12px;
+    border-radius: 7px;
+    color: #e4e2ef;
+    font: 10px var(--mono);
+    letter-spacing: .1em;
+    transition: color .2s, background .2s;
+  }
+  .mobile-nav a + a { border-top: 1px solid #ffffff0b; }
+  .mobile-nav a:hover, .mobile-nav a:focus-visible {
+    color: var(--mint);
+    background: #ffffff08;
+  }
+  .mobile-nav a span { color: var(--lavender); font-size: 8px; }
   .hero { display: flex; flex-direction: column; align-items: stretch; padding-top: 55px; padding-bottom: 75px; min-height: auto; }
   .hero-kicker { margin-top: 34px; font-size: 9px; }
   .hero h1 { font-size: clamp(68px, 19vw, 105px); }
