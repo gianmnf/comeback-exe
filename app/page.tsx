@@ -7,12 +7,12 @@ import {
   Github,
   Linkedin,
   Mail,
-  Menu,
   MoveUpRight,
   Radio,
   Sparkles,
   Terminal
 } from "lucide-react";
+import MobileNavigation from "./components/mobile-navigation";
 
 const projects = [
   {
@@ -89,9 +89,7 @@ export default function Home() {
           <span className="status-dot" />
           OPEN TO OPPORTUNITIES
         </a>
-        <button className="mobile-menu" aria-label="Open navigation">
-          <Menu size={21} />
-        </button>
+        <MobileNavigation />
       </header>
 
       <section className="hero section-wrap" id="home">
